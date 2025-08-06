@@ -13,10 +13,10 @@ platforms:
   debian12:
     ci: false
     supported: true
-  fedora40:
+  fedora41:
     ci: false
     supported: true
-  fedora41:
+  fedora42:
     ci: false
     supported: true
   alpine3:
