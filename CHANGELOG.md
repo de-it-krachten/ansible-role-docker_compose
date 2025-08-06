@@ -1,3 +1,14 @@
+# [1.12.0](https://github.com/de-it-krachten/ansible-role-docker_compose/compare/v1.11.0...v1.12.0) (2025-08-06)
+
+
+### Features
+
+* Add support for AlmaLinux 10 ([7e70956](https://github.com/de-it-krachten/ansible-role-docker_compose/commit/7e70956616643c06329132bf7ee086dbbe5354c5))
+* Add support for Debian 13 (Trixie) ([3e83b6f](https://github.com/de-it-krachten/ansible-role-docker_compose/commit/3e83b6fa65060f452c3041b35b6290606010707b))
+* Add support for OracleLinux 10 ([eb35428](https://github.com/de-it-krachten/ansible-role-docker_compose/commit/eb354286904a652e28ae5af99fa3d5da70d2f1e8))
+* Add support for Red Hat Enterprise Linux 10 ([581c33b](https://github.com/de-it-krachten/ansible-role-docker_compose/commit/581c33bcb919c4a019cc92e0043d93054c91b768))
+* Add support for RockyLinux 10 ([cfd412d](https://github.com/de-it-krachten/ansible-role-docker_compose/commit/cfd412d433816f27d56bb296da49a59b49a5e443))
+
 # [1.11.0](https://github.com/de-it-krachten/ansible-role-docker_compose/compare/v1.10.1...v1.11.0) (2024-12-29)
 
 
