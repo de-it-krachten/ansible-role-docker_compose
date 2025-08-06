@@ -64,9 +64,9 @@
 
 - name: Get latest docker-compose version
   ansible.builtin.set_fact:
-    docker_compose_version_info: "{{ docker_compose_version_info.json | json_query(query) | first }}"
+    docker_compose_version_info: "{{ docker_compose_version_info.json | json_query(qq) | first }}"
   vars:
-    query: "[?tag_name=='{{ docker_compose_version_latest if docker_compose_version == 'latest' else docker_compose_version }}']"
+    qq: "[?tag_name=='{{ docker_compose_version_latest if docker_compose_version == 'latest' else docker_compose_version }}']"
 
 - name: Show docker-compose release
   ansible.builtin.debug:
@@ -77,9 +77,9 @@
 
 - name: Get binary location
   ansible.builtin.set_fact:
-    docker_compose_bin_url: "{{ docker_compose_version_info.assets | json_query(query) | first }}"
+    docker_compose_bin_url: "{{ docker_compose_version_info.assets | json_query(qq) | first }}"
   vars:
-    query: "[?name=='docker-compose-{{ docker_compose_platform }}'].browser_download_url"
+    qq: "[?name=='docker-compose-{{ docker_compose_platform }}'].browser_download_url"
 
 - name: Download the docker_compose binary
   ansible.builtin.get_url:
