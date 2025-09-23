@@ -1,24 +1,58 @@
 ---
 
-- name: Include check.yml
-  ansible.builtin.include_tasks: check.yml
-  when: docker_compose_type is search('^(pip|binary|both)$')
+- name: Docker-compose v1
+  when: docker_compose_v1 | bool
+  block:
 
-- name: Include binary.yml
-  ansible.builtin.include_tasks: binary.yml
-  when: docker_compose_type is search('^(binary|both)$')
+    - name: Include check.yml
+      ansible.builtin.include_tasks: check.yml
+      when: docker_compose_type is search('^(pip|binary|both)$')
 
-- name: Include pip.yml
-  ansible.builtin.include_tasks: pip.yml
-  when:
-    - docker_compose_type is search('^(pip|both)$')
-    - not docker_compose_pipinvenv | bool
+    - name: Include binary.yml
+      ansible.builtin.include_tasks: binary.yml
+      when: docker_compose_type is search('^(binary|both)$')
 
-- name: Include pip-venv.yml
-  ansible.builtin.include_tasks: pip-venv.yml
-  when:
-    - docker_compose_type is search('^(pip|both)$')
-    - docker_compose_pipinvenv | bool
+    - name: Include pip.yml
+      ansible.builtin.include_tasks: pip.yml
+      when:
+        - docker_compose_type is search('^(pip|both)$')
+        - not docker_compose_pipinvenv | bool
+
+    - name: Include pip-venv.yml
+      ansible.builtin.include_tasks: pip-venv.yml
+      when:
+        - docker_compose_type is search('^(pip|both)$')
+        - docker_compose_pipinvenv | bool
+
+- name: Docker-compose v2
+  when: not docker_compose_v1 | bool
+  block:
+
+    - name: Test if binary v1 can be found
+      ansible.builtin.command:
+        cmd: file --brief --mime-type {{ docker_compose_path }}
+      changed_when: false
+      failed_when: false
+      register: __docker_compose_v1_binary
+
+    - name: Delete if binary was found
+      ansible.builtin.file:
+        path: "{{ docker_compose_path }}"
+        state: absent
+      when: __docker_compose_v1_binary.stdout is search('executable')
+
+    - name: Delete obsolete venv
+      ansible.builtin.file:
+        path: "{{ docker_compose_venv_path }}"
+        state: absent
+
+    - name: Create simple script for backwards compatibility with v1
+      ansible.builtin.copy:
+        content: |
+          #/bin/sh
+          docker compose "$@"
+        dest: /usr/local/bin/docker-compose
+        mode: "0755"
 
 - name: Include template.yml
   ansible.builtin.include_tasks: template.yml
