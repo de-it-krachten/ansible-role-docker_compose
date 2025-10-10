@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/de-it-krachten/ansible-role-docker_compose/compare/v1.12.0...v1.13.0) (2025-10-10)
+
+
+### Features
+
+* docker-compose v1 is no longer installed by default ([75d8fc6](https://github.com/de-it-krachten/ansible-role-docker_compose/commit/75d8fc6916a3f5e4403dbd6a8fdd8fb30c1a3c67))
+
 # [1.12.0](https://github.com/de-it-krachten/ansible-role-docker_compose/compare/v1.11.0...v1.12.0) (2025-08-06)
 
 
