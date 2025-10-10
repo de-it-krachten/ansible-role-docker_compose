@@ -36,7 +36,6 @@ Supported platforms
 - Debian 11 (Bullseye)
 - Debian 12 (Bookworm)<sup>1</sup>
 - Debian 13 (Trixie)
-- Ubuntu 20.04 LTS
 - Ubuntu 22.04 LTS
 - Ubuntu 24.04 LTS
 - Fedora 41<sup>1</sup>
@@ -53,10 +52,11 @@ Note:
 # Install
 # -----------------------------------------------------------------------------
 
+# Should we fall back to docker-compose v1
+docker_compose_v1: false
+
 # type of installation (binary/pip/both)
 docker_compose_type: pip
-
-# Should docker-compose be installed into a venv
 docker_compose_pipinvenv: true
 
 # Set virtual environment location
@@ -110,6 +110,9 @@ docker_compose_restart: false
 
 # Execute template code as root
 docker_compose_become: no
+
+# Should a backup of docker-compose.yml be created
+docker_compose_backup: true
 </pre></code>
 
 
