@@ -27,15 +27,6 @@
     msg: "Relative paths in volume names!"
   when: volume_paths is search('^\./')
 
-- name: Get status of all these files/directories
-  ansible.builtin.stat:
-    path: "{{ path }}"
-  become: "{{ docker_compose_become }}"
-  loop: "{{ volume_paths }}"
-  loop_control:
-    loop_var: path
-  register: __stat
-
 - name: Create the main project directory
   ansible.builtin.file:
     path: "{{ docker_compose_project_dir }}"
@@ -45,19 +36,48 @@
     mode: "{{ docker_compose_mode | default('0750') }}"
   become: "{{ docker_compose_become }}"
 
-- name: Create directories that do not exist
+- name: Create directories (implicit)
+  when: docker_compose_volumes | length == 0
+  block:
+
+    - name: Get status of all these files/directories
+      ansible.builtin.stat:
+        path: "{{ path }}"
+      become: "{{ docker_compose_become }}"
+      loop: "{{ volume_paths }}"
+      loop_control:
+        loop_var: path
+      register: __stat
+
+    - name: Create implicit directories
+      ansible.builtin.file:
+        path: "{{ volume_path.path }}"
+        state: directory
+        owner: "{{ docker_compose_owner | default('root') }}"
+        group: "{{ docker_compose_group | default(docker_group) | default('root') }}"
+        mode: "{{ docker_compose_mode | default('0750') }}"
+      become: "{{ docker_compose_become }}"
+      loop: "{{ __stat.results }}"
+      loop_control:
+        loop_var: volume_path
+        label: "{{ volume_path.path }}"
+      when:
+        - volume_path.path is not search('\.')  # assume file if '.' is found
+        - not volume_path.stat.exists or volume_path.stat.isdir
+
+- name: Create explicit directories
   ansible.builtin.file:
-    path: "{{ volume_path.path }}"
+    path: "{{ volume.path }}"
     state: directory
-    owner: "{{ docker_compose_owner | default('root') }}"
-    group: "{{ docker_compose_group | default(docker_group) | default('root') }}"
-    mode: "{{ docker_compose_mode | default('0750') }}"
+    owner: "{{ volume.owner | default(docker_compose_owner) | default('root') }}"
+    group: "{{ volume.group | default(docker_compose_group) | default(docker_group) | default('root') }}"
+    mode: "{{ volume.mode | default(docker_compose_mode) | default('0750') }}"
   become: "{{ docker_compose_become }}"
-  loop: "{{ __stat.results }}"
+  loop: "{{ docker_compose_volumes }}"
   loop_control:
-    loop_var: volume_path
-    label: "{{ volume_path.path }}"
-  when: not volume_path.stat.exists or volume_path.stat.isdir
+    loop_var: volume
+    label: "{{ volume.path }}"
+  when: docker_compose_volumes | length > 0
 
 - name: Create files from template
   ansible.builtin.template:
@@ -74,7 +94,9 @@
   ansible.builtin.template:
     src: "{{ docker_compose_template_file }}"
     dest: "{{ docker_compose_project_dir }}/docker-compose.yml"
-    mode: "0644"
+    owner: root
+    group: docker
+    mode: "0640"
     backup: "{{ docker_compose_backup | bool }}"
   become: "{{ docker_compose_become }}"
   register: __dc2

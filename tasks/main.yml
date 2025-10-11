@@ -53,6 +53,7 @@
           docker compose "$@"
         dest: /usr/local/bin/docker-compose
         mode: "0755"
+        force: false
 
 - name: Include template.yml
   ansible.builtin.include_tasks: template.yml
