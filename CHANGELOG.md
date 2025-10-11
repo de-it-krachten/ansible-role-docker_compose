@@ -1,3 +1,10 @@
+## [1.13.1](https://github.com/de-it-krachten/ansible-role-docker_compose/compare/v1.13.0...v1.13.1) (2025-10-11)
+
+
+### Bug Fixes
+
+* make it work differently for implicit./explicit volume mounts ([a633595](https://github.com/de-it-krachten/ansible-role-docker_compose/commit/a63359574d605d22bb1217cd7bf779b2e0971f2e))
+
 # [1.13.0](https://github.com/de-it-krachten/ansible-role-docker_compose/compare/v1.12.0...v1.13.0) (2025-10-10)
 
 
