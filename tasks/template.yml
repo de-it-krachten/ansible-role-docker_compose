@@ -95,7 +95,7 @@
     src: "{{ docker_compose_template_file }}"
     dest: "{{ docker_compose_project_dir }}/docker-compose.yml"
     owner: root
-    group: docker
+    group: "{{ docker_group | default('docker') }}"
     mode: "0640"
     backup: "{{ docker_compose_backup | bool }}"
   become: "{{ docker_compose_become }}"
