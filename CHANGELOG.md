@@ -1,3 +1,10 @@
+## [1.13.2](https://github.com/de-it-krachten/ansible-role-docker_compose/compare/v1.13.1...v1.13.2) (2025-10-12)
+
+
+### Bug Fixes
+
+* Use 'docker_group' variable for docker-compose file ownership ([7634b15](https://github.com/de-it-krachten/ansible-role-docker_compose/commit/7634b15d5644f8245917f76f39e623ae40b03c9b))
+
 ## [1.13.1](https://github.com/de-it-krachten/ansible-role-docker_compose/compare/v1.13.0...v1.13.1) (2025-10-11)
 
 
