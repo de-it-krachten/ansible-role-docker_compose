@@ -113,6 +113,12 @@ docker_compose_become: no
 
 # Should a backup of docker-compose.yml be created
 docker_compose_backup: true
+
+# Files to distribute to remote host
+docker_compose_files: []
+
+# Directories to create on remote host
+docker_compose_dirs: []
 </pre></code>
 
 
@@ -125,6 +131,7 @@ docker_compose_backup: true
   hosts: all
   become: 'yes'
   vars:
+    molecule_driver: '{{ lookup(''env'', ''MOLECULE_DRIVER_NAME'') }}'
     python_package_install_optional: true
     docker_compose_type: pip
   roles:
