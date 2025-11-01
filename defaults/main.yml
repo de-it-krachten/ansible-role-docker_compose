@@ -66,5 +66,8 @@ docker_compose_become: no
 # Should a backup of docker-compose.yml be created
 docker_compose_backup: true
 
-# List of local directories to create for use as volumes
-docker_compose_volumes: []
+# Files to distribute to remote host
+docker_compose_files: []
+
+# Directories to create on remote host
+docker_compose_dirs: []
