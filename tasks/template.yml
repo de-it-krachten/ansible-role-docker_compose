@@ -46,7 +46,7 @@
   become: "{{ docker_compose_become }}"
   loop: "{{ docker_compose_dirs }}"
 
-- name: Create files from template
+- name: Create files from template  # noqa jinja[spacing]
   ansible.builtin.template:
     src: "{{ item.src }}"
     dest: >-
