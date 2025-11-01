@@ -1,3 +1,10 @@
+## [1.13.3](https://github.com/de-it-krachten/ansible-role-docker_compose/compare/v1.13.2...v1.13.3) (2025-11-01)
+
+
+### Bug Fixes
+
+* Add intermediate docker_compose_dirs ([d19a159](https://github.com/de-it-krachten/ansible-role-docker_compose/commit/d19a15985b223434707a336dfa3330546e313d54))
+
 ## [1.13.2](https://github.com/de-it-krachten/ansible-role-docker_compose/compare/v1.13.1...v1.13.2) (2025-10-12)
 
 
