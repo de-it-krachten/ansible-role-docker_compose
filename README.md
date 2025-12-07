@@ -40,6 +40,7 @@ Supported platforms
 - Ubuntu 24.04 LTS
 - Fedora 41<sup>1</sup>
 - Fedora 42<sup>1</sup>
+- Fedora 43
 - Alpine 3<sup>1</sup>
 
 Note:
