@@ -1,3 +1,12 @@
+# [1.14.0](https://github.com/de-it-krachten/ansible-role-docker_compose/compare/v1.13.3...v1.14.0) (2026-03-14)
+
+
+### Features
+
+* Added support for openSUSE Leap 16 ([dc1b90e](https://github.com/de-it-krachten/ansible-role-docker_compose/commit/dc1b90eb840e8b6a3661d83eb415c43eea540e60))
+* Added support for SUSE Linux Enterprise 16 ([ea289c1](https://github.com/de-it-krachten/ansible-role-docker_compose/commit/ea289c1bdc2c9d3ed45b9127c75d46f22124f660))
+* Drop support for Fedora 41 ([19e5491](https://github.com/de-it-krachten/ansible-role-docker_compose/commit/19e54914c01c3aeaa3b9c3dc94289669983e8095))
+
 ## [1.13.3](https://github.com/de-it-krachten/ansible-role-docker_compose/compare/v1.13.2...v1.13.3) (2025-11-01)
 
 
