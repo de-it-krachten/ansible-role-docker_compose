@@ -36,8 +36,9 @@ Supported platforms
 - Debian 13 (Trixie)
 - Ubuntu 22.04 LTS
 - Ubuntu 24.04 LTS
-- Fedora 42<sup>1</sup>
+- Ubuntu 26.04 LTS
 - Fedora 43<sup>1</sup>
+- Fedora 44<sup>1</sup>
 - Alpine 3<sup>1</sup>
 
 Note:
