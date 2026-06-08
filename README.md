@@ -78,7 +78,7 @@ docker_compose_download: true
 docker_compose_version: latest
 
 # Platform/architecture, as it makes part of the binary to download
-docker_compose_platform: "{{ ansible_system | lower }}-{{ ansible_architecture }}"
+docker_compose_platform: "{{ ansible_facts.system | lower }}-{{ ansible_facts.architecture }}"
 
 # Target location/ownership/permissions for the binary
 docker_compose_path: /usr/local/bin/docker-compose
