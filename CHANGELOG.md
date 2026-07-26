@@ -1,3 +1,13 @@
+# [1.16.0](https://github.com/de-it-krachten/ansible-role-docker_compose/compare/v1.15.0...v1.16.0) (2026-07-26)
+
+
+### Features
+
+* Add support for ansible-core 2.20+ ([d11293d](https://github.com/de-it-krachten/ansible-role-docker_compose/commit/d11293d26f7b4247b1c39833450f336ad2c57425))
+* Added support for Fedora 44 ([02b12d3](https://github.com/de-it-krachten/ansible-role-docker_compose/commit/02b12d35b2ab665d1418d421b4eaca97573dc14d))
+* Added support for Ubuntu 26.04 LTS ([72e264d](https://github.com/de-it-krachten/ansible-role-docker_compose/commit/72e264d501f6adf71699576851d800b0d710fda2))
+* Drop support for Fedora 42 ([c020517](https://github.com/de-it-krachten/ansible-role-docker_compose/commit/c0205175c360d016f33fd98f26c1201c1be13e1f))
+
 # [1.15.0](https://github.com/de-it-krachten/ansible-role-docker_compose/compare/v1.14.0...v1.15.0) (2026-03-15)
 
 
