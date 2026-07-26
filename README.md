@@ -36,8 +36,9 @@ Supported platforms
 - Debian 13 (Trixie)
 - Ubuntu 22.04 LTS
 - Ubuntu 24.04 LTS
-- Fedora 42<sup>1</sup>
+- Ubuntu 26.04 LTS
 - Fedora 43<sup>1</sup>
+- Fedora 44<sup>1</sup>
 - Alpine 3<sup>1</sup>
 
 Note:
@@ -77,7 +78,7 @@ docker_compose_download: true
 docker_compose_version: latest
 
 # Platform/architecture, as it makes part of the binary to download
-docker_compose_platform: "{{ ansible_system | lower }}-{{ ansible_architecture }}"
+docker_compose_platform: "{{ ansible_facts.system | lower }}-{{ ansible_facts.architecture }}"
 
 # Target location/ownership/permissions for the binary
 docker_compose_path: /usr/local/bin/docker-compose
