@@ -58,6 +58,7 @@
     owner: "{{ item.owner | default('root') }}"
     group: "{{ item.group | default('root') }}"
     mode: "{{ item.mode | default('0644') }}"
+    backup: "{{ item.backup | default(false) }}"
   become: "{{ docker_compose_become }}"
   loop: "{{ docker_compose_files | default([]) }}"
   register: __dc1
