@@ -1,3 +1,11 @@
+# [1.17.0](https://github.com/de-it-krachten/ansible-role-docker_compose/compare/v1.16.0...v1.17.0) (2026-10-13)
+
+
+### Features
+
+* Add optional backup for templated files ([c35e1d8](https://github.com/de-it-krachten/ansible-role-docker_compose/commit/c35e1d8a4d8d1a3888b97ec494253f20145111ef))
+* Drop support for Debian 11 (Bullseye) ([fdaa64a](https://github.com/de-it-krachten/ansible-role-docker_compose/commit/fdaa64a83d0f28b99c2d445d22d00c9f3347252f))
+
 # [1.16.0](https://github.com/de-it-krachten/ansible-role-docker_compose/compare/v1.15.0...v1.16.0) (2026-07-26)
 
 
